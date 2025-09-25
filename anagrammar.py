@@ -2,7 +2,7 @@
 import itertools
 import sys
 
-def anagram_solver(letters):
+def anagram_solver(letters,display_number):
     # Load a small sample dictionary for demonstration purposes
     with open('words_alpha.txt', 'r') as file:
         dictionary = set(word.strip().lower() for word in file)
@@ -21,8 +21,8 @@ def anagram_solver(letters):
         
         # Sort the words by length (from longest to shortest)
         sorted_anagrams = sorted(set(anagrams), key=len, reverse=True)
-        
-        return sorted_anagrams[:10]  # Return up to 10 words, sorted by length
+        printed_anagrams = sorted_anagrams[:display_number] # Set printed word number to what the user enters or default to 10.
+        return printed_anagrams # Return word list to be printed
 
     # Example usage
     anagrams = find_anagrams(letters, dictionary)
@@ -45,8 +45,12 @@ def __main__():
     if len(user_input) < 1:
         print('Must provide letters for the anagram solver.\n')
         sys.exit(1)
+    if len(sys.argv) > 2:
+        display_number=int(sys.argv[2])
+    else:
+        display_number=10
     letters=alpha_check(user_input)
-    anagrams=anagram_solver(letters)
+    anagrams=anagram_solver(letters,display_number)
     for word in anagrams:
         print(word)
 
