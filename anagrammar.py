@@ -4,7 +4,7 @@ import sys
 
 def anagram_solver(letters,display_number):
     # Load a small sample dictionary for demonstration purposes
-    with open('words_alpha.txt', 'r') as file:
+    with open('/home/nvinckier/projects/fun/anagrammar/words_alpha.txt', 'r') as file:
         dictionary = set(word.strip().lower() for word in file)
 
     def find_anagrams(letters, dictionary):
