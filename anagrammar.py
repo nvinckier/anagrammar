@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 import itertools
 import sys
+import os
 
 def anagram_solver(letters,display_number):
     # Load a small sample dictionary for demonstration purposes
-    with open('/home/nvinckier/projects/fun/anagrammar/words_alpha.txt', 'r') as file:
+    home_dir=os.environ.get('HOME')
+    with open(f'{home_dir}/projects/fun/anagrammar/words_alpha.txt', 'r') as file:
         dictionary = set(word.strip().lower() for word in file)
 
     def find_anagrams(letters, dictionary):
